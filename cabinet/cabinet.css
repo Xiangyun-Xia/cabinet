@@ -1,0 +1,111 @@
+/*机柜盒子*/
+.rack-box {
+    box-sizing: border-box;
+    display: inline-block;
+    background-color: #2F2F2F;
+    margin-top: 19px;
+    padding: 5px;
+    position: relative;
+}
+
+/*机柜内部标签重置*/
+.rack-box * {
+    box-sizing: border-box;
+}
+
+/*机柜顶部*/
+.rack-box::after {
+    content: '';
+    display: inline-block;
+    height: 19px;
+    width: 100%;
+    background: url("img/cab-top.png");
+    background-size: 100% 100%;
+    position: absolute;
+    top: -19px;
+    left: 0;
+}
+
+/*机柜内部盒子*/
+.rack-inner-box {
+    width: 100%;
+}
+
+/*机柜头部温度湿度显示框*/
+.rack-index-box {
+    width: 100%;
+    border: 2px solid #747474;
+    position: relative;
+}
+
+.rack-index-box span {
+    font: 12px 'Microsoft Yahei';
+    color: #fff;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.rack-index-box span:nth-child(1) {
+    left: 10%
+}
+
+.rack-index-box span:nth-child(2) {
+    right: 10%
+}
+
+/*机柜的U层*/
+.rack-unit-box {
+    width: 100%;
+    background: url("img/unit.png");
+    background-size: 100% 100%;
+    cursor: pointer;
+    position: relative;
+    padding-left: 100%;
+    color: rgb(0, 187, 18);
+    /*color: rgb(236, 117, 0);*/
+    font-size: 14px;
+    font-weight: 700;
+    font-family: "Microsoft Yahei";
+}
+
+/*指示灯*/
+@keyframes fade {
+    from {
+        opacity: 1.0;
+    }
+    50% {
+        opacity: 0.8;
+    }
+    to {
+        opacity: 1.0;
+    }
+}
+
+.rack-unit-light {
+    height: 15px;
+    width: 15px;
+    position: absolute;
+    left: 10%;
+    top: 50%;
+    transform: translateY(-50%);
+    border-radius: 50%;
+    box-shadow: 1px 1px 2px #888;
+    animation: fade 3000ms infinite;
+}
+
+.rack-unit-redlight {
+    background: radial-gradient(#FFB6C1 1%, red 99%);
+}
+
+.rack-unit-greenlight {
+    background: radial-gradient(#00FF7F 1%, green 99%);
+}
+
+.rack-unit-yellowlight {
+    background: radial-gradient(yellow 1%, #FFD700 99%);
+}
+
+/*.rack-unit-box:hover {*/
+/*opacity: .5;*/
+/*}*/

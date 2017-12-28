@@ -1,0 +1,189 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <script src="cabinet/lib/jquery.js"></script>
+    <script src="cabinet/cabinet.js"></script>
+    <script src="layer-v3.1.1/layer/layer.js"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        body,.main {
+            height: 100%;
+            width: 100%;
+            /*background-color: #ccc;*/
+        }
+
+        .testDiv {
+            display: inline-block;
+            height: 800px;
+            width: 300px;
+            float: left;
+            border: 1px solid #000;
+        }
+
+        #box {
+            width: 100px;
+            height: 100px;
+            background-color: aquamarine;
+            position: absolute;
+        }
+    </style>
+    <link rel="stylesheet" href="cabinet/cabinet.css">
+</head>
+<body>
+<div class="main">
+    <div class="testDiv" id="test1"></div>
+    <div class="testDiv" id="test2"></div>
+    <div class="testDiv" id="test3"></div>
+    <div class="testDiv" id="box" draggable="true"></div>
+</div>
+</body>
+
+<script>
+    cabinet({
+        id:'test1',
+    })
+
+    cabinet({
+        id:'test2',
+        width: 220,
+        unit: 20,
+        height: 30,
+        unitNumShow:1
+    })
+
+    cabinet({
+        id:'test3',
+        width: 250,
+        unit: 10,
+        height: 50,
+        unitNumShow:0
+    })
+
+
+
+    cabMethod.cabDrop = function (e) {
+        layer.open({
+            type: 2,
+            title: '请选择设备',
+            area: ['600px', '360px'],
+            shadeClose: true, //点击遮罩关闭
+            content: '111.html',
+            btn: [ '确定','取消'],
+            yes:function (index, layero) {
+                cabMethod.addDevice(e,layer.dev)
+                layer.close(index);
+                console.log(e);
+                cabMethod.refreshStatus('test2',{temp:30,wetness:'20%'})
+            },
+            btn2:function (index, layero) {
+                cabMethod.resetUnit(e)
+                console.log(222);
+            },
+            cancel: function(){
+                cabMethod.resetUnit(e)
+                console.log(333);
+            }
+        });
+    }
+
+
+//    var oDiv = document.getElementById("box");
+//    oDiv.onmousedown=function(ev)
+//    {
+//        var oEvent = ev;
+//        var disX = oEvent.clientX - oDiv.offsetLeft;
+//        var disY = oEvent.clientY - oDiv.offsetTop;
+//        document.onmousemove=function (ev)
+//        {
+//            oEvent = ev;
+//            oDiv.style.left = oEvent.clientX -disX+"px";
+//            oDiv.style.top = oEvent.clientY -disY+"px";
+//        }
+//        document.onmouseup=function()
+//        {
+//            document.onmousemove=null;
+//            document.onmouseup=null;
+//        }
+//
+//    }
+
+//    function allowDrop(ev) {
+//        ev.preventDefault();
+//    }
+//
+//    var srcdiv = null;
+//    function drag(ev,divdom) {
+//        srcdiv=divdom;
+//        ev.dataTransfer.setData("text/html",divdom.innerHTML);
+//    }
+//
+//    function drop(ev,divdom) {
+//        ev.preventDefault();
+//        if(srcdiv != divdom){
+//            srcdiv.innerHTML = divdom.innerHTML;
+//            divdom.innerHTML=ev.dataTransfer.getData("text/html");
+//        }
+//    }
+</script>
+</html>
+
+
+
+
+
+
+
+<!--<!DOCTYPE HTML>-->
+<!--<html>-->
+<!--<head>-->
+    <!--<style type="text/css">-->
+        <!--#div1, #div2-->
+        <!--{float:left; width:100px; height:35px; margin:10px;padding:10px;border:1px solid #aaaaaa;}-->
+    <!--</style>-->
+    <!--<script type="text/javascript">-->
+<!--//                function allowDrop(ev) {-->
+<!--//                    ev.preventDefault();-->
+<!--//                }-->
+<!--//-->
+<!--//        var srcdiv = null;-->
+<!--//        function drag(ev,divdom) {-->
+<!--//            srcdiv=divdom;-->
+<!--//            ev.dataTransfer.setData("text/html",divdom.innerHTML);-->
+<!--//        }-->
+
+<!--//        function drop(ev,divdom) {-->
+<!--//            ev.preventDefault();-->
+<!--//            if(srcdiv != divdom){-->
+<!--//                srcdiv.innerHTML = divdom.innerHTML;-->
+<!--//                divdom.innerHTML=ev.dataTransfer.getData("text/html");-->
+<!--//            }-->
+<!--//        }-->
+<!--//        ondrop="drop(event,this)"-->
+    <!--</script>-->
+<!--</head>-->
+<!--<body>-->
+
+<!--<table>-->
+    <!--<tr>-->
+        <!--<td><img src="EquipmentType/BoHuiDataSwitches.png" alt=""></td>-->
+        <!--<td><input type="checkbox"></td>-->
+    <!--</tr>-->
+    <!--<tr>-->
+        <!--<td><img src="EquipmentType/ScramblerMachine.png" alt=""></td>-->
+        <!--<td><input type="checkbox"></td>-->
+    <!--</tr>-->
+    <!--<tr>-->
+        <!--<td><img src="EquipmentType/GDSMReceiver.png" alt=""></td>-->
+        <!--<td><input type="checkbox"></td>-->
+    <!--</tr>-->
+<!--</table>-->
+
+<!--</body>-->
+<!--</html>-->
+
